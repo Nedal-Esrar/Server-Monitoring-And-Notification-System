@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 var configuration = new ConfigurationBuilder()
-  .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+  .AddEnvironmentVariables()
   .Build();
 
 var serviceProvider = new ServiceCollection()
