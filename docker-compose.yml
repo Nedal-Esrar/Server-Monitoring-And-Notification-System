@@ -1,0 +1,80 @@
+﻿services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    networks:
+      - sysnetwork
+  
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb:/data/db
+    networks:
+      - sysnetwork
+  
+  signalrhub:
+    image: signalrhub
+    build:
+      context: .
+      dockerfile: SignalRHub/Dockerfile
+    ports:
+      - '5185:5185'
+    networks:
+      - sysnetwork
+    env_file:
+      - ./env-files/signalr-hub.env
+  
+  messageprocessingandanomalydetectionservice:
+    image: messageprocessingandanomalydetectionservice
+    build:
+      context: .
+      dockerfile: MessageProcessingAndAnomalyDetectionService/Dockerfile
+    depends_on:
+      - rabbitmq
+      - signalrhub
+      - mongo
+    networks:
+      - sysnetwork
+    env_file:
+      - ./env-files/message-processing-and-anomaly-detection-service.env
+    stdin_open: true
+    tty: true
+
+  serverstatisticscollectionservice:
+    image: serverstatisticscollectionservice
+    build:
+      context: .
+      dockerfile: ServerStatisticsCollectionService/Dockerfile
+    depends_on:
+      - rabbitmq
+    networks:
+      - sysnetwork
+    env_file:
+      - ./env-files/server-statistics-collection-service.env
+    stdin_open: true
+    tty: true
+
+  signalreventconsumerservice:
+    image: signalreventconsumerservice
+    build:
+      context: .
+      dockerfile: SignalREventConsumerService/Dockerfile
+    depends_on:
+      - signalrhub
+    networks:
+      - sysnetwork
+    env_file:
+      - ./env-files/signalr-event-consumer-service.env
+    stdin_open: true
+    tty: true
+
+networks:
+  sysnetwork:
+    driver: bridge
+
+volumes:
+  mongodb:
