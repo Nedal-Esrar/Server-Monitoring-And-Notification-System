@@ -4,7 +4,7 @@ using SignalREventConsumerService.DependencyInjection;
 using SignalREventConsumerService.Interfaces;
 
 var configuration = new ConfigurationBuilder()
-  .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+  .AddEnvironmentVariables()
   .Build();
 
 var serviceProvider = new ServiceCollection()
