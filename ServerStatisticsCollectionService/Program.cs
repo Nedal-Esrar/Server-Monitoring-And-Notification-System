@@ -4,7 +4,7 @@ using ServerStatisticsCollectionService.DependencyInjection;
 using ServerStatisticsCollectionService.Interfaces;
 
 var configuration = new ConfigurationBuilder()
-  .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+  .AddEnvironmentVariables()
   .Build();
 
 var serviceProvider = new ServiceCollection()
