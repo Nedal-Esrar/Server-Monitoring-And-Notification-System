@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBroker", "MessageBro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerStatisticsCollectionService", "ServerStatisticsCollectionService\ServerStatisticsCollectionService.csproj", "{374B1963-D251-40DB-91F6-EF75E5C6A0F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRHub", "SignalRHub\SignalRHub.csproj", "{D1943540-103D-414E-881B-E80F63854511}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{374B1963-D251-40DB-91F6-EF75E5C6A0F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{374B1963-D251-40DB-91F6-EF75E5C6A0F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{374B1963-D251-40DB-91F6-EF75E5C6A0F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1943540-103D-414E-881B-E80F63854511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1943540-103D-414E-881B-E80F63854511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1943540-103D-414E-881B-E80F63854511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1943540-103D-414E-881B-E80F63854511}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
